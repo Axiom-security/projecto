@@ -7,6 +7,7 @@ import (
 
 	"projecto/app"
 	"projecto/config"
+	"projecto/web"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -29,5 +30,6 @@ func main() {
 }
 
 func initialize(a *app.App) {
-	a.Register(config.New())
+	a.Register(config.New()).
+		Register(web.New())
 }
