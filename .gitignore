@@ -1,4 +1,5 @@
 bin/app
+src/coverage.txt
 bin/generator
 pkg
 pg-data/

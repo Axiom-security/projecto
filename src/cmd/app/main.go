@@ -22,6 +22,7 @@ func main() {
 	if err := app.Start(); err != nil {
 		log.WithFields(logger).Fatalf("app %v %v cant start error: %v", app.Name(), app.Version(), err)
 	}
+	log.WithFields(logger).Infof("app %v %v started", app.Name(), app.Version())
 	shutdownsignals := make(chan os.Signal, 1)
 	signal.Notify(shutdownsignals, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 
