@@ -10,8 +10,6 @@ import (
 
 const ComponentName = "repository/item"
 
-const table = "items"
-
 type Repository interface {
 	iItemRepo
 	app.Component
@@ -29,7 +27,9 @@ type impl struct {
 func (r *impl) Setup(a *app.App) error {
 	r.db = a.MustComponent(db.ComponentName).(*db.Database)
 	r.repoItem = newRepoItem(r.db)
-	r.db.GetDatabase().AutoMigrate(&model.Item{})
+	if err := r.db.GetDatabase().AutoMigrate(&model.Item{}); err != nil {
+		return err
+	}
 	return nil
 }
 

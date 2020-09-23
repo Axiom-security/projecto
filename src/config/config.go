@@ -33,6 +33,9 @@ func New() *Config {
 func (c *Config) Setup(a *app.App) (err error) {
 	flag.Parse()
 	source, err := ioutil.ReadFile(*config)
+	if err != nil {
+		return fmt.Errorf("can't read config file '%v': %v", *config, err)
+	}
 	if err = yaml.Unmarshal(source, &c); err != nil {
 		return fmt.Errorf("can't parse config file '%v': %v", *config, err)
 	}

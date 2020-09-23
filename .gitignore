@@ -1,4 +1,5 @@
 bin/app
+bin/generator
 pkg
 pg-data/
 *.gen.go

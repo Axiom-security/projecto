@@ -26,10 +26,9 @@ issues:
       - linters:
         - errcheck
         text: "Error return value of `.*(Close|Remove)` is not checked"
-      # We read arbitrary files in build system, it's not a problem
       - linters:
-        - staticcheck
-        text: 'unknown JSON option "filter"'
+        - misspell
+        text: "`projecto` is a misspelling of `projection`"
 
 linters-settings:
   govet:
