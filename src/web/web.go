@@ -52,6 +52,7 @@ func (api *API) registerComponents(a *app.App) (err error) {
 	components = append(
 		components,
 		new(infoAPI),
+		new(itemsAPI),
 	)
 
 	group := api.makeMainGroup()

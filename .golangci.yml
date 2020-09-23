@@ -1,0 +1,69 @@
+run:
+  deadline: 5m
+  skip-dirs:
+    - pkg
+    - pg-data
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  # disable some excludes that golangci-lint has by default. see https://github.com/golangci/golangci-lint
+  exclude-use-default: false
+  exclude-rules:
+      # Disable duplicate code or unused params validation in testing
+      - path: _test\.go$
+        linters:
+          - gofmt
+          - goimports
+          - bodyclose
+          - govet
+          - dupl
+          - unparam
+          - deadcode
+          - gosec
+          - errcheck
+      # These checks are not really useful
+      - linters:
+        - errcheck
+        text: "Error return value of `.*(Close|Remove)` is not checked"
+      # We read arbitrary files in build system, it's not a problem
+      - linters:
+        - staticcheck
+        text: 'unknown JSON option "filter"'
+
+linters-settings:
+  govet:
+    disable:
+      - composites
+linters:
+  enable-all: true
+  fast: false
+  disable:
+    - gocritic
+    - godot
+    - testpackage
+    - gomnd
+    - dupl
+    - nlreturn
+    - errcheck
+    # This project does not have a rule to have no globals
+    - gochecknoglobals
+    # This project does not have a rule to have no inits
+    - gochecknoinits
+    # This test has too many false positives
+    - gocyclo
+    - funlen
+    - gofumpt
+    - goerr113
+    - godox
+    - golint
+    - stylecheck
+    - gci
+    - wsl
+    # This project does not have a standard line length
+    - lll
+    - whitespace
+    # This project does not have a rule to forbid naked returns
+    - nakedret
+    # This project does not care about optimizing out few bytes of memory
+    - maligned

@@ -17,6 +17,13 @@ var (
 
 type Config struct {
 	Addr string `yaml:"addr"`
+	DB   struct {
+		Host     string `yaml:"host"`
+		Port     int    `yaml:"port"`
+		User     string `yaml:"user"`
+		Password string `yaml:"password"`
+		Database string `yaml:"database"`
+	} `yaml:"db"`
 }
 
 func New() *Config {
@@ -34,6 +41,17 @@ func (c *Config) Setup(a *app.App) (err error) {
 
 func (c *Config) Name() (name string) {
 	return ComponentName
+}
+
+func (c *Config) GetDB() string {
+	return fmt.Sprintf(
+		"host=%s port=%d user=%s dbname=%s password=%s sslmode=disable",
+		c.DB.Host,
+		c.DB.Port,
+		c.DB.User,
+		c.DB.Database,
+		c.DB.Password,
+	)
 }
 
 func (c *Config) GetAddr() string {

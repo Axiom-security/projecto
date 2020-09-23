@@ -7,6 +7,9 @@ import (
 
 	"projecto/app"
 	"projecto/config"
+	"projecto/db"
+	"projecto/service/item"
+	"projecto/service/item/itemrepo"
 	"projecto/web"
 
 	log "github.com/sirupsen/logrus"
@@ -31,5 +34,8 @@ func main() {
 
 func initialize(a *app.App) {
 	a.Register(config.New()).
-		Register(web.New())
+		Register(web.New()).
+		Register(db.New()).
+		Register(itemrepo.New()).
+		Register(item.New())
 }

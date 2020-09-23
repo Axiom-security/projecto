@@ -1,6 +1,8 @@
 export VERSION := $(shell git show -s --format=%h)
 export BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 export GOPATH := $(shell pwd)
+export TEMPLATE := templates/repo.go.tmpl 
+export GENERATOR := src/generator/main.go
 export PATH := $(shell pwd)/bin:$(PATH)
 import = projecto
 
