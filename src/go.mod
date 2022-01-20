@@ -11,7 +11,7 @@ require (
 	github.com/stretchr/testify v1.5.1
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
-	gopkg.in/yaml.v2 v2.2.2
+	gopkg.in/yaml.v2 v2.2.8
 	gorm.io/driver/postgres v1.0.1
 	gorm.io/gorm v1.20.1
 )
